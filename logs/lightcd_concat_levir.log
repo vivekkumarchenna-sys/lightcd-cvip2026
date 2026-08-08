@@ -1,0 +1,52 @@
+
+=== C:\Users\vivek\AppData\Local\Programs\Python\Python312\python.exe -u code/train.py --model lightcd_concat --dataset levir --epochs 28 --lr 0.0003 --batch_size 16 --workers 0 --run lightcd_concat_levir @ 14:38:24 ===
+Unexpected keys (classifier.bias, classifier.weight, conv_head.bias, conv_head.weight) found while loading pretrained weights. This may be expected if model is being adapted.
+[lightcd_concat_levir] params=1.925M device=cuda epochs=28 bs=16
+C:\Users\vivek\AppData\Local\Programs\Python\Python312\Lib\site-packages\albumentations\pytorch\transforms.py:86: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:219.)
+  return torch.from_numpy(img.transpose(2, 0, 1))
+C:\Users\vivek\OneDrive\Desktop\CVVP\code\train.py:108: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  run_loss += float(loss); iters += 1
+  ep00 loss=0.6060 valF1=0.7302 valIoU=0.5750 P=0.614 R=0.901 107s
+  ep01 loss=0.4753 valF1=0.7977 valIoU=0.6634 P=0.827 R=0.770 58s
+  ep02 loss=0.4165 valF1=0.8399 valIoU=0.7239 P=0.840 R=0.840 63s
+  ep03 loss=0.3920 valF1=0.8234 valIoU=0.6998 P=0.840 R=0.807 54s
+  ep04 loss=0.3770 valF1=0.8461 valIoU=0.7333 P=0.844 R=0.848 66s
+  ep05 loss=0.3678 valF1=0.8322 valIoU=0.7126 P=0.874 R=0.794 59s
+  ep06 loss=0.3613 valF1=0.6881 valIoU=0.5245 P=0.696 R=0.680 60s
+  ep07 loss=0.3629 valF1=0.7576 valIoU=0.6098 P=0.828 R=0.698 59s
+  ep08 loss=0.2918 valF1=0.6550 valIoU=0.4870 P=0.709 R=0.608 63s
+  ep09 loss=0.2344 valF1=0.7268 valIoU=0.5709 P=0.763 R=0.694 61s
+  ep10 loss=0.2163 valF1=0.7409 valIoU=0.5884 P=0.872 R=0.644 54s
+  ep11 loss=0.1892 valF1=0.8051 valIoU=0.6738 P=0.796 R=0.814 54s
+  ep12 loss=0.1659 valF1=0.8168 valIoU=0.6903 P=0.819 R=0.814 53s
+  ep13 loss=0.1408 valF1=0.8137 valIoU=0.6859 P=0.847 R=0.783 59s
+  ep14 loss=0.1389 valF1=0.8366 valIoU=0.7191 P=0.866 R=0.809 56s
+  ep15 loss=0.1372 valF1=0.8362 valIoU=0.7184 P=0.851 R=0.822 51s
+  ep16 loss=0.1268 valF1=0.8289 valIoU=0.7078 P=0.823 R=0.835 52s
+  ep17 loss=0.1177 valF1=0.8506 valIoU=0.7401 P=0.865 R=0.837 55s
+  ep18 loss=0.1151 valF1=0.8465 valIoU=0.7339 P=0.875 R=0.820 59s
+  ep19 loss=0.1106 valF1=0.8534 valIoU=0.7443 P=0.867 R=0.840 53s
+  ep20 loss=0.1084 valF1=0.8487 valIoU=0.7372 P=0.892 R=0.809 62s
+  ep21 loss=0.1080 valF1=0.8505 valIoU=0.7399 P=0.873 R=0.829 56s
+  ep22 loss=0.1042 valF1=0.8550 valIoU=0.7467 P=0.872 R=0.839 57s
+  ep23 loss=0.1011 valF1=0.8555 valIoU=0.7475 P=0.877 R=0.835 55s
+  ep24 loss=0.1021 valF1=0.8597 valIoU=0.7539 P=0.875 R=0.845 54s
+  ep25 loss=0.1010 valF1=0.8588 valIoU=0.7525 P=0.869 R=0.848 54s
+  ep26 loss=0.1013 valF1=0.8581 valIoU=0.7515 P=0.875 R=0.841 55s
+  ep27 loss=0.1005 valF1=0.8585 valIoU=0.7521 P=0.880 R=0.838 54s
+[lightcd_concat_levir] BEST val F1=0.8597 (epoch 24) -> C:\Users\vivek\OneDrive\Desktop\CVVP\models\lightcd_concat_levir.pt
+TRAIN_DONE
+
+=== C:\Users\vivek\AppData\Local\Programs\Python\Python312\python.exe -u code/eval.py --model lightcd_concat --ckpt C:\Users\vivek\OneDrive\Desktop\CVVP\models\lightcd_concat_levir.pt --dataset levir --split test --workers 0 --tag lightcd_concat_levir @ 15:05:56 ===
+C:\Users\vivek\AppData\Local\Programs\Python\Python312\Lib\site-packages\albumentations\pytorch\transforms.py:86: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:219.)
+  return torch.from_numpy(img.transpose(2, 0, 1))
+{
+  "precision": 0.8685629461393607,
+  "recall": 0.8412113720353513,
+  "f1": 0.8546683845077663,
+  "iou": 0.74621915069841,
+  "oa": 0.9854259938001633,
+  "kappa": 0.8469987786187558
+}
+EVAL_DONE

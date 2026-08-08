@@ -1,0 +1,35 @@
+# Datasets (large; download+prepare via scripts/prepare_npy.py)
+data/
+
+# Model checkpoints (large binaries; release via HuggingFace/Zenodo, not git)
+models/
+*.pt
+
+# Third-party reference PDFs (copyright: do not redistribute)
+references/pdfs/
+
+# Paper (manuscript + build) kept local, not in the public code repo
+paper/
+
+# Author's initial planning document
+Vision-Based Urban Growth Monitoring_ Executive Summary.docx
+
+# Paper-only artifacts kept local (bibliography, plan, manuscript-build scripts)
+references/
+PLAN.md
+scripts/build_paper.ps1
+scripts/make_docx.py
+scripts/gen_tex_tables.py
+scripts/make_architecture_fig.py
+scripts/download_refs.ps1
+scripts/verify_refs.py
+scripts/finalize.ps1
+scripts/download_levir.py
+
+# Temp/verification artifacts
+results/_*
+**/__pycache__/
+*.pyc
+
+# HF cache (kept outside repo)
+hf_cache/

@@ -1,0 +1,11 @@
+{
+  "model": "lightcd",
+  "dataset": "oscd",
+  "split": "test",
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "iou": 0.0,
+  "oa": 0.946360168457031,
+  "kappa": -6.209320417261567e-15
+}

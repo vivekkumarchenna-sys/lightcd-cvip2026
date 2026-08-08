@@ -1,0 +1,58 @@
+
+=== C:\Users\vivek\AppData\Local\Programs\Python\Python312\python.exe -u code/train.py --model fc_siam_diff --dataset levir --epochs 35 --lr 0.001 --batch_size 16 --workers 0 --run fc_siam_diff_levir @ 12:35:52 ===
+[fc_siam_diff_levir] params=1.943M device=cuda epochs=35 bs=16
+C:\Users\vivek\AppData\Local\Programs\Python\Python312\Lib\site-packages\albumentations\pytorch\transforms.py:86: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:219.)
+  return torch.from_numpy(img.transpose(2, 0, 1))
+C:\Users\vivek\OneDrive\Desktop\CVVP\code\train.py:108: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  run_loss += float(loss); iters += 1
+  ep00 loss=0.5321 valF1=0.5540 valIoU=0.3831 P=0.443 R=0.740 63s
+  ep01 loss=0.4183 valF1=0.7072 valIoU=0.5471 P=0.876 R=0.593 41s
+  ep02 loss=0.3909 valF1=0.7128 valIoU=0.5537 P=0.817 R=0.632 41s
+  ep03 loss=0.2925 valF1=0.2900 valIoU=0.1696 P=0.892 R=0.173 41s
+  ep04 loss=0.2170 valF1=0.4641 valIoU=0.3022 P=0.952 R=0.307 41s
+  ep05 loss=0.1870 valF1=0.7183 valIoU=0.5604 P=0.891 R=0.602 41s
+  ep06 loss=0.1879 valF1=0.6402 valIoU=0.4708 P=0.860 R=0.510 41s
+  ep07 loss=0.1803 valF1=0.4929 valIoU=0.3271 P=0.932 R=0.335 41s
+  ep08 loss=0.1628 valF1=0.7294 valIoU=0.5740 P=0.843 R=0.643 41s
+  ep09 loss=0.1641 valF1=0.5791 valIoU=0.4075 P=0.929 R=0.421 41s
+  ep10 loss=0.1457 valF1=0.7850 valIoU=0.6460 P=0.804 R=0.767 41s
+  ep11 loss=0.1465 valF1=0.7316 valIoU=0.5767 P=0.900 R=0.616 41s
+  ep12 loss=0.1470 valF1=0.6953 valIoU=0.5329 P=0.896 R=0.568 41s
+  ep13 loss=0.1385 valF1=0.7862 valIoU=0.6478 P=0.884 R=0.708 41s
+  ep14 loss=0.1369 valF1=0.7304 valIoU=0.5753 P=0.879 R=0.625 41s
+  ep15 loss=0.1321 valF1=0.8079 valIoU=0.6777 P=0.850 R=0.770 41s
+  ep16 loss=0.1268 valF1=0.7917 valIoU=0.6552 P=0.902 R=0.706 41s
+  ep17 loss=0.1239 valF1=0.7961 valIoU=0.6613 P=0.902 R=0.713 41s
+  ep18 loss=0.1234 valF1=0.8158 valIoU=0.6889 P=0.880 R=0.760 41s
+  ep19 loss=0.1203 valF1=0.8313 valIoU=0.7113 P=0.869 R=0.797 41s
+  ep20 loss=0.1184 valF1=0.7974 valIoU=0.6630 P=0.892 R=0.721 41s
+  ep21 loss=0.1202 valF1=0.8007 valIoU=0.6677 P=0.886 R=0.730 41s
+  ep22 loss=0.1102 valF1=0.8286 valIoU=0.7073 P=0.889 R=0.776 41s
+  ep23 loss=0.1100 valF1=0.7394 valIoU=0.5866 P=0.919 R=0.619 43s
+  ep24 loss=0.1077 valF1=0.7847 valIoU=0.6456 P=0.906 R=0.692 41s
+  ep25 loss=0.1071 valF1=0.8300 valIoU=0.7094 P=0.884 R=0.783 41s
+  ep26 loss=0.1057 valF1=0.8064 valIoU=0.6756 P=0.896 R=0.733 41s
+  ep27 loss=0.1016 valF1=0.8449 valIoU=0.7314 P=0.892 R=0.803 41s
+  ep28 loss=0.1003 valF1=0.8177 valIoU=0.6917 P=0.899 R=0.750 41s
+  ep29 loss=0.1000 valF1=0.7986 valIoU=0.6647 P=0.912 R=0.710 41s
+  ep30 loss=0.0977 valF1=0.8333 valIoU=0.7143 P=0.905 R=0.772 41s
+  ep31 loss=0.0986 valF1=0.8238 valIoU=0.7003 P=0.902 R=0.758 41s
+  ep32 loss=0.0973 valF1=0.8285 valIoU=0.7072 P=0.907 R=0.763 41s
+  ep33 loss=0.0969 valF1=0.8242 valIoU=0.7010 P=0.908 R=0.754 41s
+  ep34 loss=0.0967 valF1=0.8224 valIoU=0.6983 P=0.907 R=0.752 41s
+[fc_siam_diff_levir] BEST val F1=0.8449 (epoch 27) -> C:\Users\vivek\OneDrive\Desktop\CVVP\models\fc_siam_diff_levir.pt
+TRAIN_DONE
+
+=== C:\Users\vivek\AppData\Local\Programs\Python\Python312\python.exe -u code/eval.py --model fc_siam_diff --ckpt C:\Users\vivek\OneDrive\Desktop\CVVP\models\fc_siam_diff_levir.pt --dataset levir --split test --workers 0 --tag fc_siam_diff_levir @ 13:00:26 ===
+C:\Users\vivek\AppData\Local\Programs\Python\Python312\Lib\site-packages\albumentations\pytorch\transforms.py:86: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:219.)
+  return torch.from_numpy(img.transpose(2, 0, 1))
+{
+  "precision": 0.8851444646885752,
+  "recall": 0.7969283371291208,
+  "f1": 0.8387231577392829,
+  "iou": 0.7222422148410798,
+  "oa": 0.9843870848417282,
+  "kappa": 0.8305433146713657
+}
+EVAL_DONE

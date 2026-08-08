@@ -1,0 +1,83 @@
+{
+  "device": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "res": 256,
+  "rows": [
+    {
+      "model": "fc_ef",
+      "params_M": 1.943,
+      "gmacs": 3.099,
+      "latency_ms_bs1": 2.157,
+      "throughput_imgs_s": 639.4
+    },
+    {
+      "model": "fc_siam_diff",
+      "params_M": 1.943,
+      "gmacs": 4.176,
+      "latency_ms_bs1": 3.995,
+      "throughput_imgs_s": 463.2
+    },
+    {
+      "model": "fc_siam_conc",
+      "params_M": 2.138,
+      "gmacs": 4.78,
+      "latency_ms_bs1": 3.17,
+      "throughput_imgs_s": 409.5
+    },
+    {
+      "model": "resnet18_siam",
+      "params_M": 14.74,
+      "gmacs": 8.553,
+      "latency_ms_bs1": 5.412,
+      "throughput_imgs_s": 420.7
+    },
+    {
+      "model": "lightcd",
+      "params_M": 2.346,
+      "gmacs": 0.482,
+      "latency_ms_bs1": 12.388,
+      "throughput_imgs_s": 1396.5
+    },
+    {
+      "model": "lightcd_hr",
+      "params_M": 2.346,
+      "gmacs": 0.804,
+      "latency_ms_bs1": 10.837,
+      "throughput_imgs_s": 1240.4
+    },
+    {
+      "model": "lightcd_large",
+      "params_M": 7.31,
+      "gmacs": 1.381,
+      "latency_ms_bs1": 15.164,
+      "throughput_imgs_s": 727.1
+    },
+    {
+      "model": "lightcd_concat",
+      "params_M": 1.925,
+      "gmacs": 0.451,
+      "latency_ms_bs1": 11.333,
+      "throughput_imgs_s": 1428.4
+    },
+    {
+      "model": "lightcd_diff",
+      "params_M": 1.59,
+      "gmacs": 0.423,
+      "latency_ms_bs1": 10.743,
+      "throughput_imgs_s": 1520.9
+    },
+    {
+      "model": "lightcd_noca",
+      "params_M": 2.261,
+      "gmacs": 0.481,
+      "latency_ms_bs1": 12.697,
+      "throughput_imgs_s": 1363.8
+    },
+    {
+      "model": "lightcd_nosa",
+      "params_M": 2.345,
+      "gmacs": 0.48,
+      "latency_ms_bs1": 12.635,
+      "throughput_imgs_s": 1412.7
+    }
+  ]
+}

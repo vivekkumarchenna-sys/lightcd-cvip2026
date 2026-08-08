@@ -1,0 +1,64 @@
+
+=== C:\Users\vivek\AppData\Local\Programs\Python\Python312\python.exe -u code/train.py --model lightcd --dataset levir --epochs 40 --lr 0.0003 --batch_size 16 --workers 0 --run lightcd_levir @ 11:57:05 ===
+Unexpected keys (classifier.bias, classifier.weight, conv_head.bias, conv_head.weight) found while loading pretrained weights. This may be expected if model is being adapted.
+[lightcd_levir] params=2.346M device=cuda epochs=40 bs=16
+C:\Users\vivek\AppData\Local\Programs\Python\Python312\Lib\site-packages\albumentations\pytorch\transforms.py:86: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:219.)
+  return torch.from_numpy(img.transpose(2, 0, 1))
+C:\Users\vivek\OneDrive\Desktop\CVVP\code\train.py:108: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  run_loss += float(loss); iters += 1
+  ep00 loss=0.5859 valF1=0.8010 valIoU=0.6681 P=0.805 R=0.797 90s
+  ep01 loss=0.4712 valF1=0.8144 valIoU=0.6869 P=0.806 R=0.823 53s
+  ep02 loss=0.4165 valF1=0.8227 valIoU=0.6988 P=0.806 R=0.840 59s
+  ep03 loss=0.3897 valF1=0.8405 valIoU=0.7249 P=0.884 R=0.801 61s
+  ep04 loss=0.3756 valF1=0.8370 valIoU=0.7197 P=0.820 R=0.855 61s
+  ep05 loss=0.3681 valF1=0.8386 valIoU=0.7221 P=0.798 R=0.883 61s
+  ep06 loss=0.3611 valF1=0.8536 valIoU=0.7446 P=0.884 R=0.826 56s
+  ep07 loss=0.3627 valF1=0.7277 valIoU=0.5719 P=0.870 R=0.625 57s
+  ep08 loss=0.3247 valF1=0.7568 valIoU=0.6087 P=0.821 R=0.702 61s
+  ep09 loss=0.2610 valF1=0.7380 valIoU=0.5848 P=0.707 R=0.772 58s
+  ep10 loss=0.2223 valF1=0.7181 valIoU=0.5602 P=0.761 R=0.680 60s
+  ep11 loss=0.1734 valF1=0.8040 valIoU=0.6722 P=0.823 R=0.786 61s
+  ep12 loss=0.1558 valF1=0.8093 valIoU=0.6796 P=0.855 R=0.768 56s
+  ep13 loss=0.1498 valF1=0.8192 valIoU=0.6937 P=0.793 R=0.847 60s
+  ep14 loss=0.1398 valF1=0.8361 valIoU=0.7183 P=0.859 R=0.814 62s
+  ep15 loss=0.1286 valF1=0.8357 valIoU=0.7178 P=0.885 R=0.792 59s
+  ep16 loss=0.1251 valF1=0.8415 valIoU=0.7264 P=0.869 R=0.816 59s
+  ep17 loss=0.1204 valF1=0.8023 valIoU=0.6699 P=0.892 R=0.729 58s
+  ep18 loss=0.1247 valF1=0.8442 valIoU=0.7303 P=0.855 R=0.833 58s
+  ep19 loss=0.1249 valF1=0.8318 valIoU=0.7121 P=0.854 R=0.811 55s
+  ep20 loss=0.1184 valF1=0.8523 valIoU=0.7426 P=0.885 R=0.822 55s
+  ep21 loss=0.1173 valF1=0.8512 valIoU=0.7409 P=0.880 R=0.824 55s
+  ep22 loss=0.1136 valF1=0.8507 valIoU=0.7402 P=0.866 R=0.836 54s
+  ep23 loss=0.1109 valF1=0.8489 valIoU=0.7375 P=0.866 R=0.832 54s
+  ep24 loss=0.1066 valF1=0.8551 valIoU=0.7469 P=0.887 R=0.825 55s
+  ep25 loss=0.1050 valF1=0.8611 valIoU=0.7561 P=0.887 R=0.836 53s
+  ep26 loss=0.1031 valF1=0.8531 valIoU=0.7439 P=0.878 R=0.829 55s
+  ep27 loss=0.1020 valF1=0.8615 valIoU=0.7566 P=0.874 R=0.849 55s
+  ep28 loss=0.0998 valF1=0.8570 valIoU=0.7498 P=0.869 R=0.846 55s
+  ep29 loss=0.0993 valF1=0.8548 valIoU=0.7464 P=0.870 R=0.840 54s
+  ep30 loss=0.0982 valF1=0.8544 valIoU=0.7458 P=0.874 R=0.835 55s
+  ep31 loss=0.0970 valF1=0.8591 valIoU=0.7530 P=0.879 R=0.840 54s
+  ep32 loss=0.0947 valF1=0.8617 valIoU=0.7570 P=0.880 R=0.844 54s
+  ep33 loss=0.0933 valF1=0.8615 valIoU=0.7567 P=0.880 R=0.844 55s
+  ep34 loss=0.0920 valF1=0.8602 valIoU=0.7547 P=0.867 R=0.853 55s
+  ep35 loss=0.0941 valF1=0.8617 valIoU=0.7570 P=0.870 R=0.854 54s
+  ep36 loss=0.0927 valF1=0.8622 valIoU=0.7579 P=0.872 R=0.853 54s
+  ep37 loss=0.0927 valF1=0.8619 valIoU=0.7574 P=0.875 R=0.849 54s
+  ep38 loss=0.0923 valF1=0.8629 valIoU=0.7589 P=0.876 R=0.850 55s
+  ep39 loss=0.0926 valF1=0.8631 valIoU=0.7592 P=0.879 R=0.847 54s
+[lightcd_levir] BEST val F1=0.8631 (epoch 39) -> C:\Users\vivek\OneDrive\Desktop\CVVP\models\lightcd_levir.pt
+TRAIN_DONE
+
+=== C:\Users\vivek\AppData\Local\Programs\Python\Python312\python.exe -u code/eval.py --model lightcd --ckpt C:\Users\vivek\OneDrive\Desktop\CVVP\models\lightcd_levir.pt --dataset levir --split test --workers 0 --tag lightcd_levir @ 12:35:30 ===
+C:\Users\vivek\AppData\Local\Programs\Python\Python312\Lib\site-packages\albumentations\pytorch\transforms.py:86: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:219.)
+  return torch.from_numpy(img.transpose(2, 0, 1))
+{
+  "precision": 0.8772022917480244,
+  "recall": 0.843322114650531,
+  "f1": 0.8599286223108735,
+  "iou": 0.7542761269304984,
+  "oa": 0.9860043898224831,
+  "kappa": 0.8525658285937096
+}
+EVAL_DONE
