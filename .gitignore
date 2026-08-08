@@ -20,7 +20,6 @@ PLAN.md
 scripts/build_paper.ps1
 scripts/make_docx.py
 scripts/gen_tex_tables.py
-scripts/make_architecture_fig.py
 scripts/download_refs.ps1
 scripts/verify_refs.py
 scripts/finalize.ps1
