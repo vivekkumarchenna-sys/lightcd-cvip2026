@@ -9,8 +9,9 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-FIG = os.path.join(ROOT, "figures")
+FIG = os.path.join(ROOT, "paper", "figures")
 os.makedirs(FIG, exist_ok=True)
+matplotlib.rcParams["pdf.fonttype"] = 42
 
 C_IMG = "#cfe4ff"; C_ENC = "#ffe0b3"; C_FEAT = "#fff0d6"
 C_TDA = "#ffc9cf"; C_DEC = "#c9e8cc"; C_OUT = "#e5ccf0"; C_ATT = "#ded2f5"; C_OP = "#bfe6f5"
@@ -95,6 +96,6 @@ axb.text(21.0, 3.5, "$a_c, a_s$", fontsize=9, color="#444")
 arr(axb, (gate["r"], 6.0), (fused["l"], 6.0))
 
 plt.tight_layout()
-p = os.path.join(FIG, "architecture.png")
-plt.savefig(p, dpi=175, bbox_inches="tight", facecolor="white"); plt.close()
+p = os.path.join(FIG, "architecture.pdf")
+plt.savefig(p, bbox_inches="tight", facecolor="white"); plt.close()
 print("wrote", p)

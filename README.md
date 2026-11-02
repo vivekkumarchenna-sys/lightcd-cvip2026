@@ -5,38 +5,42 @@ growth monitoring, designed to train and run on a single consumer 8 GB GPU
 (developed on an NVIDIA RTX 5060 with PyTorch 2.11 / CUDA 12.8, AMP).
 
 ## Method
-LightCD = weight-shared **MobileNetV3** Siamese encoder + a **Temporal-Difference
-Attention (TDA)** fusion module + a compact U-Net decoder. TDA fuses
-`[f_A ; f_B ; |f_A - f_B|]` and gates it with channel (SE) and spatial attention
-computed *from the temporal difference*. Two operating points:
-- **LightCD** (MobileNetV3-Small): ~2.35M params, ~0.48 GMACs, ~1400 img/s.
-- **LightCD-L** (MobileNetV3-Large): ~7.31M params, ~1.38 GMACs, higher accuracy.
+LightCD is a weight-shared MobileNetV3 Siamese encoder, a Temporal-Difference Attention
+(TDA) fusion module and a compact U-Net decoder. TDA fuses `[f_A ; f_B ; |f_A - f_B|]` and gates
+it with channel and spatial attention read from the temporal difference. LightCD uses
+MobileNetV3-Small and LightCD-L uses MobileNetV3-Large.
 
-## Main results (LEVIR-CD test)
-| Model | Params (M) | GMACs | F1 (%) | IoU (%) |
-|---|---|---|---|---|
-| LightCD-L (ours) | 7.31 | 1.38 | **89.2** | **80.5** |
-| ResNet18-Siam | 14.74 | 8.55 | 88.0 | 78.6 |
-| FC-Siam-conc | 2.14 | 4.78 | 86.7 | 76.5 |
-| LightCD (ours) | 2.35 | 0.48 | 86.0 | 75.4 |
-| FC-Siam-diff | 1.94 | 4.18 | 83.9 | 72.2 |
-| FC-EF | 1.94 | 3.10 | 80.4 | 67.2 |
+## Results (LEVIR-CD test)
+Every model trained for 40 epochs at batch size 16 under one protocol. Latency is the median single-image time at 256x256 with
+32-bit floats; throughput uses batch size 16 on an RTX 5060 laptop GPU.
 
-LightCD-L beats the ResNet-18 baseline with 2x fewer params and 6x fewer FLOPs;
-TDA adds +2.8 F1 over plain fusion (ablation). Zero-shot cross-dataset transfer
-(EGY-BCD / SYSU / OSCD) largely fails, a candid negative result.
+| Model | Seeds | Params (M) | GMACs | CPU 1 thread (ms) | GPU images/s | F1 (%) | IoU (%) |
+|---|---|---|---|---|---|---|---|
+| A2Net (our port) | 1 | 3.78 | 2.98 | 78 | 512 | 89.6 | 81.2 |
+| LightCD-L (ours) | 2 | 7.31 | 1.38 | 47 | 771 | 89.3 | 80.6 |
+| ResNet18-Siam | 1 | 14.74 | 8.55 | 221 | 428 | 88.2 | 78.9 |
+| FC-Siam-conc | 1 | 2.14 | 4.78 | 115 | 466 | 87.3 | 77.4 |
+| BIT (our port) | 1 | 3.04 | 8.72 | 252 | 274 | 86.6 | 76.3 |
+| LightCD (ours) | 2 | 2.35 | 0.48 | 25 | 1288 | 86.1 | 75.6 |
+| TinyCD (our port) | 1 | 0.29 | 1.49 | 126 | 244 | 84.9 | 73.8 |
+| FC-Siam-diff | 1 | 1.94 | 4.18 | 105 | 515 | 84.9 | 73.7 |
+| FC-EF | 1 | 1.94 | 3.10 | 71 | 731 | 81.7 | 69.1 |
+
+The ablation found no measurable F1 gain from TDA over plain concatenation
+(`results/r2/summary.json`), and transfer to EGY-BCD, SYSU-CD and OSCD fails without target
+labels. TinyCD, A2Net and BIT reach higher F1 under their authors' longer budgets. `results/`
+outside `r2/` holds earlier runs.
 
 ## Repository layout
 ```
-code/          model, data, losses, metrics, train/eval/benchmark
-  models/          fc.py (FC-EF/Siam baselines), siamese.py (LightCD + TDA), factory
-  data.py          fast memmapped .npy loaders + GPU-side normalization
-  train.py         AMP training, best-val checkpointing
-  eval.py          test / cross-dataset evaluation
-  benchmark.py     params, GMACs (ptflops), latency/throughput
-scripts/       prepare data, run experiments, aggregate results, make figures
-figures/       result figures (efficiency, curves, qualitative, attention)
-results/       metrics json/csv, efficiency.json, aggregated tables
+code/          models, data, losses, metrics, train/eval/benchmark
+  models/          fc.py (FC baselines), siamese.py (LightCD, TDA), tinycd.py, bit.py, factory
+  train.py         AMP training, best-val checkpointing, per-epoch resume
+  eval.py          test evaluation
+  benchmark_r2.py  params, GMACs (ptflops), GPU and CPU latency, throughput
+scripts/       review runs, cross-dataset study, attention measure, tables, figures
+figures/       figures of the paper
+results/r2/    every result behind the paper
 ```
 
 ## Reproduce
@@ -52,20 +56,28 @@ results/       metrics json/csv, efficiency.json, aggregated tables
    python scripts/prepare_npy.py --dataset sysu --splits test
    python scripts/prepare_npy.py --dataset oscd
    ```
-3. Efficiency benchmark: `python code/benchmark.py`
-4. Train all models + ablations: `python scripts/run_all_training.py`
-   (or a single model: `python code/train.py --model lightcd_large --epochs 40 --batch_size 16 --workers 0`)
-5. Cross-dataset eval + aggregate + figures:
+3. Train every model and seed (resumable; set `LIGHTCD_MODELS` to keep checkpoints elsewhere):
    ```bash
-   python scripts/run_cross_eval.py
-   python scripts/aggregate_results.py
-   python scripts/make_figures.py
+   python scripts/run_review_queue.py
+   ```
+4. Benchmark, transfer, attention, tables and figures:
+   ```bash
+   python code/benchmark_r2.py
+   python scripts/cross_r2.py
+   python scripts/attention_quant.py
+   python scripts/aggregate_r2.py
+   python scripts/gen_tables_r2.py
+   python scripts/make_figures_r2.py
    ```
 
 ## Models (`code/models/__init__.py`)
-`fc_ef`, `fc_siam_diff`, `fc_siam_conc`, `resnet18_siam`, `lightcd`,
-`lightcd_large`, `lightcd_hr`, and ablations `lightcd_diff`, `lightcd_concat`,
+`fc_ef`, `fc_siam_diff`, `fc_siam_conc`, `resnet18_siam`, `tinycd`, `bit`, `a2net`, `lightcd`,
+`lightcd_large`, `lightcd_hr`, and ablations `lightcd_diff`, `lightcd_concat`, `lightcd_nogate`,
 `lightcd_noca`, `lightcd_nosa`.
+
+`a2net` needs `code/models/a2net.py`, which is not included, because its source repository
+(github.com/guanyuezhen/A2Net) states no licence. Porting it from that repository restores the
+model; `scripts/run_review_queue.py` and `code/benchmark_r2.py` expect the class `A2Net`.
 
 ## Datasets (decoded to `data/` via scripts/prepare_npy.py)
 - **LEVIR-CD** (`ericyu/LEVIRCD_Cropped_256`) — primary benchmark
@@ -80,4 +92,6 @@ PyTorch (~2.5 GB commit), so many workers can exhaust the system commit limit on
 data path fast (~1 min/epoch on the RTX 5060).
 
 ## License
-MIT (code). Datasets retain their original licenses.
+MIT for our code. `code/models/tinycd.py` and `code/models/bit.py` are ported from their authors'
+repositories, which release the code for non-commercial and research purposes only, so those two
+files keep that restriction. Datasets retain their original licences.

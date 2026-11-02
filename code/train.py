@@ -64,16 +64,18 @@ def main():
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--run", default=None)
     ap.add_argument("--no_pretrained", action="store_true")
+    ap.add_argument("--models_dir", default=None, help="checkpoint folder (default: models/)")
     args = ap.parse_args()
 
     run = args.run or f"{args.model}_{args.dataset}"
     outdir = os.path.join(ROOT, "results", run)
     os.makedirs(outdir, exist_ok=True)
-    os.makedirs(os.path.join(ROOT, "models"), exist_ok=True)
+    models_dir = args.models_dir or os.path.join(ROOT, "models")
 
     set_seed(args.seed)
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    torch.backends.cudnn.benchmark = True
+    # benchmark mode makes large trial allocations, which fail on a GPU shared by several runs
+    torch.backends.cudnn.benchmark = False
 
     train_loader, val_loader = loaders(args.dataset, args.batch_size, args.workers)
     model = build_model(args.model, pretrained=not args.no_pretrained).to(device)
@@ -87,10 +89,22 @@ def main():
     history = []
     best_f1 = -1.0
     best_metrics = None
-    ckpt_path = os.path.join(ROOT, "models", f"{run}.pt")
+    ckpt_path = os.path.join(models_dir, f"{run}.pt")
+    os.makedirs(os.path.dirname(ckpt_path), exist_ok=True)
     print(f"[{run}] params={n_params/1e6:.3f}M device={device} epochs={args.epochs} bs={args.batch_size}")
 
-    for epoch in range(args.epochs):
+    # a run that dies on a GPU fault continues from its last finished epoch
+    last_path = ckpt_path + ".last"
+    start_epoch = 0
+    if os.path.exists(last_path):
+        st = torch.load(last_path, map_location=device, weights_only=False)
+        model.load_state_dict(st["model"]); opt.load_state_dict(st["opt"])
+        sched.load_state_dict(st["sched"]); scaler.load_state_dict(st["scaler"])
+        history, best_f1, best_metrics = st["history"], st["best_f1"], st["best_metrics"]
+        start_epoch = st["epoch"] + 1
+        print(f"[{run}] resumed after epoch {st['epoch']}")
+
+    for epoch in range(start_epoch, args.epochs):
         model.train()
         t0 = time.time()
         run_loss, iters = 0.0, 0
@@ -101,7 +115,11 @@ def main():
             opt.zero_grad(set_to_none=True)
             with torch.amp.autocast("cuda"):
                 logits = model(a, b)
-                loss = loss_fn(logits, m)
+                # deep supervision: a model may return one logit map per decoder level
+                if isinstance(logits, (list, tuple)):
+                    loss = sum(loss_fn(x, m) for x in logits)
+                else:
+                    loss = loss_fn(logits, m)
             scaler.scale(loss).backward()
             scaler.step(opt)
             scaler.update()
@@ -121,7 +139,12 @@ def main():
                         "val": best_metrics, "n_params": n_params}, ckpt_path)
         with open(os.path.join(outdir, "history.json"), "w") as f:
             json.dump(history, f, indent=2)
+        torch.save({"model": model.state_dict(), "opt": opt.state_dict(), "sched": sched.state_dict(),
+                    "scaler": scaler.state_dict(), "history": history, "best_f1": best_f1,
+                    "best_metrics": best_metrics, "epoch": epoch}, last_path)
 
+    if os.path.exists(last_path):
+        os.remove(last_path)
     summary = {"run": run, "model": args.model, "dataset": args.dataset,
                "n_params": n_params, "best_val_f1": best_f1, "best_val": best_metrics,
                "epochs": args.epochs, "batch_size": args.batch_size, "lr": args.lr}

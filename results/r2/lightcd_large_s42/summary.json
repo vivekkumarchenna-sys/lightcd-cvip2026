@@ -1,0 +1,20 @@
+{
+  "run": "lightcd_large_levir",
+  "model": "lightcd_large",
+  "dataset": "levir",
+  "n_params": 7310483,
+  "best_val_f1": 0.8961887573807601,
+  "best_val": {
+    "precision": 0.9048510636449645,
+    "recall": 0.8876907311378034,
+    "f1": 0.8961887573807601,
+    "iou": 0.8119039956143753,
+    "oa": 0.9913696050643921,
+    "kappa": 0.8916868272810021,
+    "loss": 0.06567484891947117,
+    "epoch": 33
+  },
+  "epochs": 40,
+  "batch_size": 16,
+  "lr": 0.0003
+}

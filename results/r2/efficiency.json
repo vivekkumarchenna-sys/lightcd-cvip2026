@@ -1,0 +1,414 @@
+{
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "cpu": "Intel Core i7-14650HX",
+  "res": 256,
+  "passes": 3,
+  "rows": [
+    {
+      "model": "fc_ef",
+      "params_M": 1.943009,
+      "gmacs": 3.099,
+      "gpu_lat_ms": 2.01,
+      "gpu_lat_ms_passes": [
+        2.01,
+        1.92,
+        2.48
+      ],
+      "gpu_fps_bs16": 731.46,
+      "gpu_fps_bs16_passes": [
+        725.7,
+        731.46,
+        732.16
+      ],
+      "cpu1_lat_ms": 70.62,
+      "cpu1_lat_ms_passes": [
+        83.78,
+        69.27,
+        70.62
+      ],
+      "cpu4_lat_ms": 32.54,
+      "cpu4_lat_ms_passes": [
+        33.12,
+        23.01,
+        32.54
+      ]
+    },
+    {
+      "model": "fc_siam_diff",
+      "params_M": 1.942577,
+      "gmacs": 4.176,
+      "gpu_lat_ms": 2.81,
+      "gpu_lat_ms_passes": [
+        3.08,
+        2.81,
+        2.69
+      ],
+      "gpu_fps_bs16": 515.09,
+      "gpu_fps_bs16_passes": [
+        514.65,
+        515.09,
+        515.89
+      ],
+      "cpu1_lat_ms": 105.42,
+      "cpu1_lat_ms_passes": [
+        114.31,
+        105.42,
+        102.17
+      ],
+      "cpu4_lat_ms": 47.76,
+      "cpu4_lat_ms_passes": [
+        48.01,
+        47.76,
+        47.0
+      ]
+    },
+    {
+      "model": "fc_siam_conc",
+      "params_M": 2.138417,
+      "gmacs": 4.78,
+      "gpu_lat_ms": 2.92,
+      "gpu_lat_ms_passes": [
+        2.88,
+        3.28,
+        2.92
+      ],
+      "gpu_fps_bs16": 466.38,
+      "gpu_fps_bs16_passes": [
+        466.38,
+        464.76,
+        466.56
+      ],
+      "cpu1_lat_ms": 115.26,
+      "cpu1_lat_ms_passes": [
+        135.56,
+        113.06,
+        115.26
+      ],
+      "cpu4_lat_ms": 52.46,
+      "cpu4_lat_ms_passes": [
+        52.46,
+        45.06,
+        52.62
+      ]
+    },
+    {
+      "model": "resnet18_siam",
+      "params_M": 14.740097,
+      "gmacs": 8.553,
+      "gpu_lat_ms": 5.12,
+      "gpu_lat_ms_passes": [
+        5.13,
+        5.12,
+        4.78
+      ],
+      "gpu_fps_bs16": 427.68,
+      "gpu_fps_bs16_passes": [
+        427.68,
+        427.15,
+        427.96
+      ],
+      "cpu1_lat_ms": 221.17,
+      "cpu1_lat_ms_passes": [
+        222.76,
+        221.17,
+        219.25
+      ],
+      "cpu4_lat_ms": 97.25,
+      "cpu4_lat_ms_passes": [
+        97.25,
+        77.39,
+        97.8
+      ]
+    },
+    {
+      "model": "bit",
+      "params_M": 3.036737,
+      "gmacs": 8.72,
+      "gpu_lat_ms": 10.89,
+      "gpu_lat_ms_passes": [
+        11.79,
+        10.89,
+        10.77
+      ],
+      "gpu_fps_bs16": 274.47,
+      "gpu_fps_bs16_passes": [
+        274.87,
+        274.47,
+        274.46
+      ],
+      "cpu1_lat_ms": 251.5,
+      "cpu1_lat_ms_passes": [
+        273.39,
+        250.73,
+        251.5
+      ],
+      "cpu4_lat_ms": 101.21,
+      "cpu4_lat_ms_passes": [
+        104.64,
+        100.17,
+        101.21
+      ]
+    },
+    {
+      "model": "a2net",
+      "params_M": 3.780356,
+      "gmacs": 2.983,
+      "gpu_lat_ms": 14.76,
+      "gpu_lat_ms_passes": [
+        14.8,
+        14.76,
+        14.0
+      ],
+      "gpu_fps_bs16": 511.97,
+      "gpu_fps_bs16_passes": [
+        511.36,
+        511.97,
+        512.69
+      ],
+      "cpu1_lat_ms": 77.52,
+      "cpu1_lat_ms_passes": [
+        82.93,
+        77.48,
+        77.52
+      ],
+      "cpu4_lat_ms": 50.3,
+      "cpu4_lat_ms_passes": [
+        50.65,
+        46.98,
+        50.3
+      ]
+    },
+    {
+      "model": "tinycd",
+      "params_M": 0.285128,
+      "gmacs": 1.49,
+      "gpu_lat_ms": 8.52,
+      "gpu_lat_ms_passes": [
+        8.89,
+        8.51,
+        8.52
+      ],
+      "gpu_fps_bs16": 243.96,
+      "gpu_fps_bs16_passes": [
+        243.9,
+        244.06,
+        243.96
+      ],
+      "cpu1_lat_ms": 126.0,
+      "cpu1_lat_ms_passes": [
+        127.58,
+        119.69,
+        126.0
+      ],
+      "cpu4_lat_ms": 67.34,
+      "cpu4_lat_ms_passes": [
+        71.58,
+        66.35,
+        67.34
+      ]
+    },
+    {
+      "model": "lightcd",
+      "params_M": 2.345554,
+      "gmacs": 0.482,
+      "gpu_lat_ms": 9.54,
+      "gpu_lat_ms_passes": [
+        9.53,
+        9.55,
+        9.54
+      ],
+      "gpu_fps_bs16": 1288.19,
+      "gpu_fps_bs16_passes": [
+        1290.99,
+        1288.19,
+        1277.98
+      ],
+      "cpu1_lat_ms": 25.04,
+      "cpu1_lat_ms_passes": [
+        26.51,
+        25.04,
+        25.01
+      ],
+      "cpu4_lat_ms": 19.73,
+      "cpu4_lat_ms_passes": [
+        19.01,
+        19.73,
+        20.25
+      ]
+    },
+    {
+      "model": "lightcd_large",
+      "params_M": 7.310483,
+      "gmacs": 1.381,
+      "gpu_lat_ms": 10.95,
+      "gpu_lat_ms_passes": [
+        11.31,
+        10.7,
+        10.95
+      ],
+      "gpu_fps_bs16": 770.95,
+      "gpu_fps_bs16_passes": [
+        770.95,
+        776.53,
+        764.65
+      ],
+      "cpu1_lat_ms": 46.55,
+      "cpu1_lat_ms_passes": [
+        49.48,
+        45.71,
+        46.55
+      ],
+      "cpu4_lat_ms": 33.46,
+      "cpu4_lat_ms_passes": [
+        33.46,
+        31.77,
+        34.05
+      ]
+    },
+    {
+      "model": "lightcd_concat",
+      "params_M": 1.925153,
+      "gmacs": 0.451,
+      "gpu_lat_ms": 8.48,
+      "gpu_lat_ms_passes": [
+        8.73,
+        8.48,
+        8.14
+      ],
+      "gpu_fps_bs16": 1425.93,
+      "gpu_fps_bs16_passes": [
+        1370.87,
+        1425.93,
+        1444.63
+      ],
+      "cpu1_lat_ms": 21.83,
+      "cpu1_lat_ms_passes": [
+        21.69,
+        21.83,
+        23.43
+      ],
+      "cpu4_lat_ms": 17.66,
+      "cpu4_lat_ms_passes": [
+        17.84,
+        17.66,
+        17.33
+      ]
+    },
+    {
+      "model": "lightcd_diff",
+      "params_M": 1.589985,
+      "gmacs": 0.423,
+      "gpu_lat_ms": 8.09,
+      "gpu_lat_ms_passes": [
+        8.09,
+        8.2,
+        8.03
+      ],
+      "gpu_fps_bs16": 1454.44,
+      "gpu_fps_bs16_passes": [
+        1333.97,
+        1454.44,
+        1501.44
+      ],
+      "cpu1_lat_ms": 21.12,
+      "cpu1_lat_ms_passes": [
+        20.95,
+        22.77,
+        21.12
+      ],
+      "cpu4_lat_ms": 16.48,
+      "cpu4_lat_ms_passes": [
+        15.79,
+        16.48,
+        18.05
+      ]
+    },
+    {
+      "model": "lightcd_nogate",
+      "params_M": 2.260321,
+      "gmacs": 0.479,
+      "gpu_lat_ms": 8.41,
+      "gpu_lat_ms_passes": [
+        8.62,
+        8.41,
+        8.24
+      ],
+      "gpu_fps_bs16": 1382.6,
+      "gpu_fps_bs16_passes": [
+        1372.1,
+        1382.6,
+        1390.84
+      ],
+      "cpu1_lat_ms": 24.2,
+      "cpu1_lat_ms_passes": [
+        22.81,
+        25.44,
+        24.2
+      ],
+      "cpu4_lat_ms": 18.12,
+      "cpu4_lat_ms_passes": [
+        18.12,
+        18.33,
+        17.7
+      ]
+    },
+    {
+      "model": "lightcd_noca",
+      "params_M": 2.260816,
+      "gmacs": 0.481,
+      "gpu_lat_ms": 8.79,
+      "gpu_lat_ms_passes": [
+        8.76,
+        8.92,
+        8.79
+      ],
+      "gpu_fps_bs16": 1331.0,
+      "gpu_fps_bs16_passes": [
+        1327.55,
+        1331.0,
+        1353.1
+      ],
+      "cpu1_lat_ms": 24.92,
+      "cpu1_lat_ms_passes": [
+        24.92,
+        24.5,
+        25.11
+      ],
+      "cpu4_lat_ms": 19.14,
+      "cpu4_lat_ms_passes": [
+        19.14,
+        18.22,
+        19.45
+      ]
+    },
+    {
+      "model": "lightcd_nosa",
+      "params_M": 2.345059,
+      "gmacs": 0.48,
+      "gpu_lat_ms": 8.93,
+      "gpu_lat_ms_passes": [
+        8.93,
+        8.68,
+        9.13
+      ],
+      "gpu_fps_bs16": 1360.18,
+      "gpu_fps_bs16_passes": [
+        1338.31,
+        1367.81,
+        1360.18
+      ],
+      "cpu1_lat_ms": 22.95,
+      "cpu1_lat_ms_passes": [
+        22.95,
+        22.91,
+        23.61
+      ],
+      "cpu4_lat_ms": 17.44,
+      "cpu4_lat_ms_passes": [
+        17.44,
+        17.39,
+        18.29
+      ]
+    }
+  ]
+}

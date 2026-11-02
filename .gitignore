@@ -1,8 +1,8 @@
 # Datasets (large; download+prepare via scripts/prepare_npy.py)
-data/
+/data/
 
 # Model checkpoints (large binaries; release via HuggingFace/Zenodo, not git)
-models/
+/models/
 *.pt
 
 # Third-party reference PDFs (copyright: do not redistribute)
@@ -12,7 +12,7 @@ references/pdfs/
 paper/
 
 # Author's initial planning document
-Vision-Based Urban Growth Monitoring_ Executive Summary.docx
+Vision-Based Urban Growth Monitoring Executive Summary.docx
 
 # Paper-only artifacts kept local (bibliography, plan, manuscript-build scripts)
 references/
@@ -32,3 +32,17 @@ results/_*
 
 # HF cache (kept outside repo)
 hf_cache/
+
+# Run management, local only
+archive/
+logs/r2/
+logs/r2_cross.log
+logs/r2_queue.log
+logs/r2_bench3.log
+logs/finish_overnight.log
+scripts/finish_overnight.py
+scripts/verify_refs2.py
+scripts/review_slots.txt
+
+# A2Net port: its source repository states no licence, so it is not redistributed
+code/models/a2net.py

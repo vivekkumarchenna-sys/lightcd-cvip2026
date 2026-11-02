@@ -1,0 +1,22 @@
+# every run behind the paper: model seed lr
+fc_ef 42 1e-3
+fc_siam_diff 42 1e-3
+fc_siam_conc 42 1e-3
+resnet18_siam 42 3e-4
+bit 42 3e-4
+a2net 42 3e-4
+tinycd 42 3e-4
+lightcd 42 3e-4
+lightcd_large 42 3e-4
+lightcd_concat 42 3e-4
+lightcd_diff 42 3e-4
+lightcd_nogate 42 3e-4
+lightcd_noca 42 3e-4
+lightcd_nosa 42 3e-4
+lightcd 1 3e-4
+lightcd_large 1 3e-4
+lightcd_concat 1 3e-4
+lightcd_diff 1 3e-4
+lightcd_nogate 1 3e-4
+lightcd_noca 1 3e-4
+lightcd_nosa 1 3e-4
